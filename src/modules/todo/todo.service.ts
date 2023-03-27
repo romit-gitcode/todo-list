@@ -1,10 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { AuthService } from '../auth/auth.service';
 import { FileService } from 'src/shared/file.service';
 import * as fs from 'fs';
 import * as path from 'path';
+import { HttpExceptionFilter } from 'src/filter/http-exception.filter';
 
 @Injectable()
 export class TodoService {
@@ -12,27 +13,74 @@ export class TodoService {
   private file = path.join(process.cwd(), 'storage', 'romit', 'store.json');
 
   async pushTask(createTodoDto: CreateTodoDto) {
-    const todo = await this.fileService.readFile(this.file);
-    todo.push(createTodoDto);
-    this.fileService.writeFile(this.file, JSON.stringify(todo));
-    return createTodoDto;
-    // return 'This action adds a new todo';
+    try {
+      const todo = await this.fileService.readFile(this.file);
+      todo.push(createTodoDto);
+      const object = { tasks: todo };
+      this.fileService.writeFile(this.file, JSON.stringify(object));
+      return createTodoDto;
+    } catch (err) {
+      throw err;
+    }
   }
 
   async findAll() {
-    const todo = await this.fileService.readFile(this.file);
-    return todo;
+    try {
+      const todo = await this.fileService.readFile(this.file);
+      return todo;
+    } catch (err) {
+      throw err;
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} todo`;
+  async findOne(id: number) {
+    try {
+      const todo = await this.fileService.readFile(this.file);
+      const task = todo.find((taskTodo: any) => {
+        return taskTodo.id === id;
+      });
+      return task;
+    } catch (err) {
+      throw err;
+    }
   }
 
-  update(id: number, updateTodoDto: UpdateTodoDto) {
-    return `This action updates a #${id} todo`;
+  async update(id: number, data: UpdateTodoDto) {
+    try {
+      const todo = await this.fileService.readFile(this.file);
+      const index = todo.findIndex((taskTodo: any) => {
+        return taskTodo.id === id;
+      });
+      const updateTask = { ...todo[index], ...data, id: id };
+      if (index != -1) {
+        todo[index] = updateTask;
+        const object = { tasks: todo };
+        this.fileService.writeFile(this.file, JSON.stringify(object));
+      } else {
+        throw new NotFoundException();
+      }
+    } catch (err) {
+      throw err;
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} todo`;
+  async remove(id: number) {
+    try {
+      const todo = await this.fileService.readFile(this.file);
+      const index = todo.findIndex((taskTodo: any) => {
+        return taskTodo.id === id;
+      });
+      if (index != -1) {
+        const deletedTask = todo[index];
+        todo.splice(index, 1);
+        const object = { tasks: todo };
+        this.fileService.writeFile(this.file, JSON.stringify(object));
+        return deletedTask;
+      } else {
+        throw new NotFoundException();
+      }
+    } catch (err) {
+      throw err;
+    }
   }
 }

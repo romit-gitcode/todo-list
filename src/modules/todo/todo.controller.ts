@@ -33,17 +33,29 @@ export class TodoController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.todoService.findOne(+id);
+  async findOne(@Param('id') id: string): Promise<ResponseData<any>> {
+    return {
+      data: await this.todoService.findOne(+id),
+      message: 'Successfull',
+    };
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
-    return this.todoService.update(+id, updateTodoDto);
+  async update(
+    @Param('id') id: string,
+    @Body() data: UpdateTodoDto,
+  ): Promise<ResponseData<any>> {
+    return {
+      data: await this.todoService.update(+id, data),
+      message: 'Deleted Successfull',
+    };
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.todoService.remove(+id);
+  async remove(@Param('id') id: string): Promise<ResponseData<any>> {
+    return {
+      data: await this.todoService.remove(+id),
+      message: 'Successfull',
+    };
   }
 }
