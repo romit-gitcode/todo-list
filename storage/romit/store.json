@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "title": "Buy groceries",
+    "description": "Milk, eggs, bread, and butter",
+    "completed": false,
+    "dueDate": "Mon Mar 30 2023 12:08:21 GMT+0530 (India Standard Time)"
+  },
+  {
+    "id": 2,
+    "title": "Do laundry",
+    "description": "Wash and fold clothes",
+    "completed": true,
+    "dueDate": "Mon Mar 28 2023 12:08:21 GMT+0530 (India Standard Time)"
+  },
+  {
+    "id": 3,
+    "title": "Email Client",
+    "description": "Send updates to client regarding progress",
+    "completed": true,
+    "dueDate": "Mon Mar 27 2023 12:08:21 GMT+0530 (India Standard Time)"
+  },
+  {
+    "id": 4,
+    "title": "Finish project",
+    "description": "Complete project deliverables by Friday",
+    "completed": false,
+    "dueDate": "Mon Mar 29 2023 12:08:21 GMT+0530 (India Standard Time)"
+  },
+  {
+    "id": 5,
+    "title": "Weekly Report",
+    "description": "Complete weekly report of internship for week 1-4",
+    "completed": false,
+    "dueDate": "Mon Mar 30 2023 12:08:21 GMT+0530 (India Standard Time)"
+  },
+  {
+    "id": 6,
+    "title": "Weekly Report",
+    "description": "Complete weekly report of internship for week 5-8",
+    "completed": true,
+    "dueDate": "Mon Mar 31 2023 12:08:21 GMT+0530 (India Standard Time)"
+  },
+  {
+    "id": 7,
+    "title": "Presentation",
+    "description": "Complete presentation of internship",
+    "completed": true,
+    "dueDate": "Mon Mar 31 2023 12:08:21 GMT+0530 (India Standard Time)"
+  },
+  {
+    "id": 8,
+    "title": "Start New Project",
+    "description": "Complete project deliverables by Friday",
+    "completed": false,
+    "dueDate": "Mon Mar 31 2023 12:08:21 GMT+0530 (India Standard Time)"
+  },
+  {
+    "id": 9,
+    "title": "Start New Project",
+    "description": "Complete project deliverables by Friday",
+    "completed": false,
+    "dueDate": "Mon Mar 31 2023 12:08:21 GMT+0530 (India Standard Time)"
+  }
+]
