@@ -15,7 +15,7 @@ export class AuthMiddleware implements NestMiddleware {
       if (basic) {
         basic = basic[1];
         basic = Buffer.from(basic, 'base64').toString('utf8');
-        if (basic == 'romit:123456') {
+        if (basic == 'romit@palminfotech:Palm@romit2023') {
           return next();
         }
       }

@@ -22,11 +22,20 @@ export class ResponseInterceptor<T> implements NestInterceptor<T, Response<T>> {
     const status = context.switchToHttp().getResponse().statusCode;
     return next.handle().pipe(
       map((data) => {
-        return {
-          status: status,
-          message: data.message,
-          data: data.data,
-        };
+        if (!data['meta']) {
+          return {
+            status: status,
+            message: data.message,
+            data: data.data,
+          };
+        } else {
+          return {
+            status: status,
+            message: data.message,
+            data: data.data,
+            meta: data.meta,
+          };
+        }
       }),
     );
   }

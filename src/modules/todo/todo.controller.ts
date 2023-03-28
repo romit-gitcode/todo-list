@@ -6,11 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { ResponseData } from 'src/shared/constants';
+import { PaginationDto } from '../../shared/dto/pagination.dto';
 
 @Controller('todo')
 export class TodoController {
@@ -25,10 +27,13 @@ export class TodoController {
   }
 
   @Get()
-  async findAll(): Promise<ResponseData<any>> {
+  async findAll(@Query() page: PaginationDto): Promise<ResponseData<any>> {
+    // console.log(page);
+    const data = await this.todoService.findAll(page);
     return {
-      data: await this.todoService.findAll(),
+      data: data.pagetodo,
       message: 'Successfull',
+      meta: data.meta,
     };
   }
 
