@@ -29,7 +29,7 @@ export class ResponseTimeInterceptor implements NestInterceptor {
           requestTime: new Date(requestTime).toISOString(),
           responseTime: new Date(responseTime).toISOString(),
           apiTime: apiTime,
-          name: 'Romit',
+          name: request['user'],
         };
         const logs = JSON.parse(await fs.readFile(this.FILE_PATH, 'utf-8'));
         logs.push(log);

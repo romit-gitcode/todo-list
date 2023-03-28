@@ -1,1 +1,74 @@
-{"tasks":[{"id":1,"title":"Buy ingridients","description":"Milk, eggs, bread, and Ghee","completed":false,"dueDate":"23 Mar 2023, 10:00 am"},{"id":2,"title":"Buy ingridients","description":"Milk, eggs, bread, and Ghee","completed":true,"dueDate":"23 Mar 2023, 10:00 am"},{"id":3,"title":"Email Client","description":"Send updates to client regarding progress","completed":true,"dueDate":"23 Mar 2023, 10:00 am"},{"id":4,"title":"Buy ingridients","description":"Milk, eggs, bread, and Ghee","completed":false,"dueDate":"23 Mar 2023, 10:00 am"},{"id":5,"title":"Weekly Report","description":"Complete weekly report of internship for week 1-4","completed":false,"dueDate":"23 Mar 2023, 10:00 am"},{"id":6,"title":"Weekly Report","description":"Complete weekly report of internship for week 5-8","completed":true,"dueDate":"23 Mar 2023, 10:00 am"},{"id":7,"title":"Presentation","description":"Complete presentation of internship","completed":true,"dueDate":"23 Mar 2023, 10:00 am"},{"id":8,"title":"Start New Project","description":"Complete project deliverables by Friday","completed":false,"dueDate":"23 Mar 2023, 10:00 am"},{"id":9,"title":"Start New Project","description":"Complete project deliverables by Friday","completed":false,"dueDate":"23 Mar 2023, 10:00 am"},{"id":10,"title":"Presentation","description":"Complete presentation of internship","completed":false,"dueDate":"23 Mar 2023, 10:00 am"}]}
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Buy ingridients",
+      "description": "Milk, eggs, bread, and Ghee",
+      "completed": false,
+      "dueDate": "23 Mar 2023, 10:00 am"
+    },
+    {
+      "id": 2,
+      "title": "Buy ingridients",
+      "description": "Milk, eggs, bread, and Ghee",
+      "completed": true,
+      "dueDate": "23 Mar 2023, 10:00 am"
+    },
+    {
+      "id": 3,
+      "title": "Buy ingri",
+      "description": "Milk, eggs, bread, and Ghee",
+      "completed": true,
+      "dueDate": "23 Mar 2023, 10:00 am"
+    },
+    {
+      "id": 4,
+      "title": "Buy ingridients",
+      "description": "Milk, eggs, bread, and Ghee",
+      "completed": false,
+      "dueDate": "23 Mar 2023, 10:00 am"
+    },
+    {
+      "id": 5,
+      "title": "Weekly Report",
+      "description": "Complete weekly report of internship for week 1-4",
+      "completed": false,
+      "dueDate": "23 Mar 2023, 10:00 am"
+    },
+    {
+      "id": 6,
+      "title": "Weekly Report",
+      "description": "Complete weekly report of internship for week 5-8",
+      "completed": true,
+      "dueDate": "23 Mar 2023, 10:00 am"
+    },
+    {
+      "id": 7,
+      "title": "Presentation",
+      "description": "Complete presentation of internship",
+      "completed": true,
+      "dueDate": "23 Mar 2023, 10:00 am"
+    },
+    {
+      "id": 8,
+      "title": "Start New Project",
+      "description": "Complete project deliverables by Friday",
+      "completed": false,
+      "dueDate": "23 Mar 2023, 10:00 am"
+    },
+    {
+      "id": 9,
+      "title": "Start New Project",
+      "description": "Complete project deliverables by Friday",
+      "completed": false,
+      "dueDate": "23 Mar 2023, 10:00 am"
+    },
+    {
+      "id": 10,
+      "title": "Presentation",
+      "description": "Complete presentation of internship",
+      "completed": false,
+      "dueDate": "23 Mar 2023, 10:00 am"
+    }
+  ]
+}

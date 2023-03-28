@@ -3,7 +3,7 @@ import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 import { AuthService } from '../auth/auth.service';
 import { FileService } from 'src/shared/file.service';
-import * as fs from 'fs';
+import * as fs from 'fs/promises';
 import * as path from 'path';
 import { HttpExceptionFilter } from 'src/filter/http-exception.filter';
 import { MetaDto } from '../../shared/dto/meta.dto';
@@ -14,21 +14,37 @@ export class TodoService {
   constructor(private fileService: FileService) {}
   private file = path.join(process.cwd(), 'storage', 'romit', 'store.json');
 
-  async pushTask(createTodoDto: CreateTodoDto) {
+  async pushTask(createTodoDto: CreateTodoDto, username: string) {
     try {
-      const todo = await this.fileService.readFile(this.file);
+      await fs.access(path.join(process.cwd(), 'storage', username));
+    } catch (error) {
+      await this.fileService.makeDirectory(
+        path.join(process.cwd(), 'storage', username),
+      );
+    }
+    try {
+      const file = path.join(process.cwd(), 'storage', username, 'store.json');
+      const todo = await this.fileService.readFile(file);
       todo.push(createTodoDto);
       const object = { tasks: todo };
-      this.fileService.writeFile(this.file, JSON.stringify(object));
+      this.fileService.writeFile(file, JSON.stringify(object));
       return createTodoDto;
     } catch (err) {
       throw err;
     }
   }
 
-  async findAll(page: PaginationDto) {
+  async findAll(page: PaginationDto, username: string) {
     try {
-      const todo = await this.fileService.readFile(this.file);
+      await fs.access(path.join(process.cwd(), 'storage', username));
+    } catch (error) {
+      await this.fileService.makeDirectory(
+        path.join(process.cwd(), 'storage', username),
+      );
+    }
+    try {
+      const file = path.join(process.cwd(), 'storage', username, 'store.json');
+      const todo = await this.fileService.readFile(file);
       const meta: MetaDto = {
         currentPage: +page.page,
         endPage: Math.ceil(todo.length / page.limit),
@@ -59,9 +75,17 @@ export class TodoService {
     }
   }
 
-  async update(id: number, data: UpdateTodoDto) {
+  async update(id: number, data: UpdateTodoDto, username: string) {
     try {
-      const todo = await this.fileService.readFile(this.file);
+      await fs.access(path.join(process.cwd(), 'storage', username));
+    } catch (error) {
+      await this.fileService.makeDirectory(
+        path.join(process.cwd(), 'storage', username),
+      );
+    }
+    try {
+      const file = path.join(process.cwd(), 'storage', username, 'store.json');
+      const todo = await this.fileService.readFile(file);
       const index = todo.findIndex((taskTodo: any) => {
         return taskTodo.id === id;
       });
@@ -69,7 +93,7 @@ export class TodoService {
       if (index != -1) {
         todo[index] = updateTask;
         const object = { tasks: todo };
-        this.fileService.writeFile(this.file, JSON.stringify(object));
+        this.fileService.writeFile(file, JSON.stringify(object));
       } else {
         throw new NotFoundException();
       }
@@ -78,9 +102,17 @@ export class TodoService {
     }
   }
 
-  async remove(id: number) {
+  async remove(id: number, username: string) {
     try {
-      const todo = await this.fileService.readFile(this.file);
+      await fs.access(path.join(process.cwd(), 'storage', username));
+    } catch (error) {
+      await this.fileService.makeDirectory(
+        path.join(process.cwd(), 'storage', username),
+      );
+    }
+    try {
+      const file = path.join(process.cwd(), 'storage', username, 'store.json');
+      const todo = await this.fileService.readFile(file);
       const index = todo.findIndex((taskTodo: any) => {
         return taskTodo.id === id;
       });
@@ -88,7 +120,7 @@ export class TodoService {
         const deletedTask = todo[index];
         todo.splice(index, 1);
         const object = { tasks: todo };
-        this.fileService.writeFile(this.file, JSON.stringify(object));
+        this.fileService.writeFile(file, JSON.stringify(object));
         return deletedTask;
       } else {
         throw new NotFoundException();

@@ -25,4 +25,13 @@ export class FileService {
       throw error;
     }
   };
+
+  makeDirectory = async (path: string) => {
+    try {
+      await fs.mkdir(path);
+      await fs.writeFile(path + '/store.json', JSON.stringify({ tasks: [] }));
+    } catch (error) {
+      throw error;
+    }
+  };
 }

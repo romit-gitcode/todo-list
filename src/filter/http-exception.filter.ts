@@ -4,6 +4,7 @@ import {
   ArgumentsHost,
   HttpException,
   BadRequestException,
+  HttpStatus,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import * as fs from 'fs';
@@ -20,7 +21,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
-    const status = exception.getStatus();
+    let status = exception.getStatus();
     const filePath = path.join(process.cwd(), 'storage', 'logs', 'time.json');
     const obj = {
       status: status,
