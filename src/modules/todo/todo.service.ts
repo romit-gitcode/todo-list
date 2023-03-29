@@ -63,9 +63,17 @@ export class TodoService {
     }
   }
 
-  async findOne(id: number) {
+  async findOne(id: number, username: string) {
     try {
-      const todo = await this.fileService.readFile(this.file);
+      await fs.access(path.join(process.cwd(), 'storage', username));
+    } catch (error) {
+      await this.fileService.makeDirectory(
+        path.join(process.cwd(), 'storage', username),
+      );
+    }
+    try {
+      const file = path.join(process.cwd(), 'storage', username, 'store.json');
+      const todo = await this.fileService.readFile(file);
       const task = todo.find((taskTodo: any) => {
         return taskTodo.id === id;
       });

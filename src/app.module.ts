@@ -34,6 +34,7 @@ export class AppModule implements NestModule {
       { path: 'todo/:id', method: RequestMethod.DELETE },
       { path: 'todo', method: RequestMethod.GET },
       { path: 'todo/:id', method: RequestMethod.PATCH },
+      { path: 'todo/:id', method: RequestMethod.GET },
     );
   }
 }

@@ -42,9 +42,12 @@ export class TodoController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string): Promise<ResponseData<any>> {
+  async findOne(
+    @Req() req: Request,
+    @Param('id') id: string,
+  ): Promise<ResponseData<any>> {
     return {
-      data: await this.todoService.findOne(+id),
+      data: await this.todoService.findOne(+id, req['user']),
       message: 'Successfull',
     };
   }
