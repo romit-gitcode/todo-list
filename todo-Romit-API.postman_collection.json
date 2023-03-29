@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "1282daad-5af9-4e58-bdf8-4dadabdd93ad",
+		"name": "todo-Romit-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26445525"
+	},
+	"item": [
+		{
+			"name": "Post Todo",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Palm@romit2023",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "romit@palminfotech",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"id\": 14,\n      \"title\": \"adsvsadvc\",\n      \"description\":\"kjjnoiufvbfdsdvkyirori\",\n      \"completed\": true,\n      \"dueDate\": \"24 Mar 2023, 10:00 am\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/todo",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Todo",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Palm@romit2023",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "romit@palminfotech",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/todo?pagination=true&page=1&limit=3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"todo"
+					],
+					"query": [
+						{
+							"key": "pagination",
+							"value": "true"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Todo",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Palm@romit2023",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "romit@palminfotech",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"title\": \"Buy ingrid\",\n      \"description\": \"Milk, eggs, bread, and Ghee\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/todo/14",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"todo",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Todo",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Palm@romit2023",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "romit@palminfotech",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/todo/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"todo",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Todo",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Palm@romit2023",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "romit@palminfotech",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/todo/10",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"todo",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
